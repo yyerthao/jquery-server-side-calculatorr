@@ -5,16 +5,18 @@ Create a user interface where the user can input two values (2 input elements) a
 ----------------------------------------------------------------------------------------------------------------------------------------
 LAYING OUT STEPS TO COMPLETE THIS ASSIGNMENT
 HTML
-- 2 input elements [] [];
-- button '=' to take the values from input elements, bundles it up in an object, send object to server via POST
-- button 'C that will clear user input fields
+[x] 2 input elements [] [];
+[x] 4 mathematical calculations 
+[x] button '=' to take the values from input elements, bundles it up in an object, send object to server via POST
+[x] button 'C that will clear user input fields
+
 
 JQUERY
-- grab input element by ids and put a click handler on it
-- create function to take input elements
-    - store into an object
-    - send object to server via post (ajax POST)
-- 
+[x] grab input element by ids and put a click handler on it
+[x] create function to take input elements
+    [] store into an object
+    [] send object to server via post (ajax POST)
+[] 
 
 
 

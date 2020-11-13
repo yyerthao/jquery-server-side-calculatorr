@@ -11,18 +11,18 @@ app.use(bodyParser.urlencoded({
 
 // ---------------- BEGIN ROUTE -----------------------------------------------------------------
 
-const inputArray = [];
+const calcArray = [];
 
 // Route to GET Mary's cats
 app.get('/calculator', (req, res) => {
     console.log('Sending calculated data...');
-    res.send(inputArray);
+    res.send(calcArray);
 });
 
 app.post('/calculator', (req, res) => {
     let calcdata = req.body
     console.log('Getting calculated data...', calcdata);
-    catArray.push(calcdata);
+    calcArray.push(calcdata);
     calcdata
     res.sendStatus(200); // 200 is an OK status
 });

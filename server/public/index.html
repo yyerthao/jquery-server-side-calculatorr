@@ -14,18 +14,26 @@
     <header>
         <h1>Server Side Calculator</h1>
     </header>
-    <div>
-        <section>
+    <main>
+        <form>
             <input id="input1" type="number" placeholder="Number">
-            <button> + </button>
-            <button> - </button>
-            <button> * </button>
-            <button> / </button>
+            <button id="add-Btn"> + </button>
+            <button id="minus-Btn"> - </button>
+            <button id="mult-Btn"> * </button>
+            <button id="div-Btn"> / </button>
             <input id="input2" type="number" placeholder="Number">
             <button id="calculateInput">=</button>
             <button id="clearInput">C</button>
-        </section>
-    </div>
+        </form>
+        <div>
+            <h2>Calculations History</h2>
+            <ul id="history-list">
+                <!-- jQuery will fill this in -->
+            </ul>
+
+        </div>
+    </main>
+
 </body>
 
 </html>
