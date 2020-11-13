@@ -5,22 +5,27 @@ $(document).ready(readyNow)
 function readyNow() {
     console.log('Hello from JQ');
     $('#calculateInput').on('click', calculateInput);
+    $('#add-Btn').on('click', calculation);
+    $('#minus-Btn').on('click', calculation);
+    $('#mult-Btn').on('click', calculation);
+    $('#div-Btn').on('click', calculation);
+    $('#clearInput').on('click', clearInput);
     getNumbers();
 }
 
 function calculateInput(event) {
     event.preventDefault();
-    console.log('Calculating inputs');
-    // store input element values into variables
+// store input element values into variables
     let firstInput = $('#input1').val();
     let secondInput = $('#input2').val();
-    // storing variables created into object
+// storing variables created into object
+// and will send this via a POST 
     let array = {
         firstNumber: firstInput,
         secondNumber: secondInput
     }
     console.log('Numbers are:', array);
-    
+// jquery to post info to browser?????????????
     $.ajax({
         method: 'POST',
         url: '/calculator',
@@ -29,16 +34,25 @@ function calculateInput(event) {
             secondNumber: secondInput
         }
     }).then(function (response) {
-        // Then is run if you get a good response from the server
+// Then is run if you get a good response from the server
         console.log('Added successfully!');
-        // clear inputs
+// clear inputs whenever button gets clicked
         $('#input1').val('');
         $('#input2').val('');
         getNumbers();
-    })
+        calculation();
+    });
 }
 
+function calculation() {
+    console.log('CALCUATING');
 
+}
+
+function clearInput(){
+    console.log('Clearing input');
+    
+}
 
 function getNumbers(){
     $.ajax({
@@ -46,9 +60,9 @@ function getNumbers(){
         url: '/calculator',
     }).then(function (response) {
         console.log('Got messages', response);
-        // everytime you do a post, go back to get from server
+// everytime you do a post, go back to get from server
         renderNumbers(response);
-    })
+    });
 }
 
 function renderNumbers(array) {
@@ -57,3 +71,5 @@ function renderNumbers(array) {
         $('#history-list').append(`<li>${item.firstNumber}: ${item.secondNumber}</li>`)
     }
 }
+
+
