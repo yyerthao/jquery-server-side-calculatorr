@@ -11,12 +11,12 @@ app.use(bodyParser.urlencoded({
 
 // ---------------- BEGIN ROUTE -----------------------------------------------------------------
 
-const catArray = ['Abby', 'Kyo', 'Fred'];
+const inputArray = [];
 
 // Route to GET Mary's cats
 app.get('/calculator', (req, res) => {
     console.log('Sending calculated data...');
-    res.send(catArray);
+    res.send(inputArray);
 });
 
 app.post('/calculator', (req, res) => {
