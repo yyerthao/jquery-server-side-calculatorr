@@ -46,12 +46,10 @@ function calculateInput(event) {
 
 function calculation() {
     console.log('CALCUATING');
-
 }
 
 function clearInput(){
     console.log('Clearing input');
-    
 }
 
 function getNumbers(){

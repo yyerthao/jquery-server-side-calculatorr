@@ -13,7 +13,7 @@ HTML
 
 
 JQUERY
-[x] grab input element by ids and put a click handler on it
+[x] grab input element by IDs and put a click handler on it
 [x] create function to take input elements
     [x] store into an object
     [x] send object to server via post (ajax POST)
