@@ -10,22 +10,22 @@ app.use(bodyParser.urlencoded({
 
 
 // ---------------- BEGIN ROUTE -----------------------------------------------------------------
-
+// saving messages from client
 const calcArray = [];
 
-// Route to GET Mary's cats
+// grabs info from browser
+app.post('/calculator', (req, res) => {
+    console.log('Got message...', req.body);
+    calcArray.push(req.body);
+    res.sendStatus(200); // 200 is an OK status
+});
+
+// route to get things from SERVER?
 app.get('/calculator', (req, res) => {
-    console.log('Sending calculated data...');
+    console.log('Getting messages...');
     res.send(calcArray);
 });
 
-app.post('/calculator', (req, res) => {
-    let calcdata = req.body
-    console.log('Getting calculated data...', calcdata);
-    calcArray.push(calcdata);
-    calcdata
-    res.sendStatus(200); // 200 is an OK status
-});
 
 // ---------------- END ROUTE -----------------------------------------------------------------
 

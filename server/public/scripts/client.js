@@ -2,14 +2,13 @@ console.log('Hello from js');
 
 $(document).ready(readyNow)
 
-function readyNow(){
+function readyNow() {
     console.log('Hello from JQ');
     $('#calculateInput').on('click', calculateInput);
-
-
+    getNumbers();
 }
 
-function calculateInput(event){
+function calculateInput(event) {
     event.preventDefault();
     console.log('Calculating inputs');
     // store input element values into variables
@@ -21,29 +20,40 @@ function calculateInput(event){
         secondNumber: secondInput
     }
     console.log('Numbers are:', array);
+    
+    $.ajax({
+        method: 'POST',
+        url: '/calculator',
+        data: {
+            firstNumber: firstInput,
+            secondNumber: secondInput
+        }
+    }).then(function (response) {
+        // Then is run if you get a good response from the server
+        console.log('Added successfully!');
+        // clear inputs
+        $('#input1').val('');
+        $('#input2').val('');
+        getNumbers();
+    })
 }
 
 
-// function getInput(){
-//     $.ajax({
-//         method: 'POST',
-//         url: '/calculator',
-//         data: {
-//             inventory: itemName,
-//             description: descriptName
-//         }
-//     }).then(function (response) {
-//         // Then is run if you get a good response from the server
-//         console.log('Added successfully!');
-//         // Get all the items again, so we see the updates
-//         // SUPER INTERESTING, we need get the items again 
-//         getItems();
-//         // clear inputs
-//         $('#input1').val('');
-//         $('#input2').val('');
-//     }).catch(function (error) {
-//         // console.log & alert the user
-//         console.log('Error', error);
-//         alert('Something bad happened. Try again later.')
-//     })
-//     }
+
+function getNumbers(){
+    $.ajax({
+        method: 'GET',
+        url: '/calculator',
+    }).then(function (response) {
+        console.log('Got messages', response);
+        // everytime you do a post, go back to get from server
+        renderNumbers(response);
+    })
+}
+
+function renderNumbers(array) {
+    $('#history-list').empty();
+    for (let item of array) {
+        $('#history-list').append(`<li>${item.firstNumber}: ${item.secondNumber}</li>`)
+    }
+}
