@@ -30,7 +30,7 @@ function handleMessage(event) {
     let mathObject = {
         firstNumber: firstInput,
         secondNumber: secondInput,
-        operator: operator
+        operator: operator,
     }
     console.log('Numbers are:', mathObject);
 
@@ -85,9 +85,9 @@ function getNumbers(){ // gets the results from server side
 // response turns into an array
 // response[0] = most recent calculations
 // response[0].answer = most recent answer 
-        console.log('Got messages', response);
-        console.log('Got messages', response[0]);
-        console.log('Got messages', response[0].answer);
+    console.log('Got messages', response);
+// console.log('Got messages', response[0]);
+// console.log('Got messages', response[0].answer);
 // everytime you do a post, go back to get from server
         renderNumbers(response);
     });
@@ -96,7 +96,7 @@ function getNumbers(){ // gets the results from server side
 function renderNumbers(array) {
     $('#history-list').empty();
     for (let item of array) {
-        $('#history-list').append(`<li>${item.firstNumber}: ${item.secondNumber}</li>`)
+        $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.result}</li>`)
     }
 }
 

@@ -29,7 +29,3 @@ function calculator(data) {
     return data;
 }
 
-
-
-// can add additional functions , but must be called inside
-// function calculator
