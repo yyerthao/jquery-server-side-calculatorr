@@ -14,15 +14,16 @@ app.use(bodyParser.urlencoded({
 const calcArray = [];
 
 // grabs info from browser
-app.post('/calculator', (req, res) => {
+app.post('/calculator', (req, res) => { 
     console.log('Got message...', req.body);
-    calcArray.push(req.body);
+    calcArray.push(req.body); // req.body is same as data object
     res.sendStatus(200); // 200 is an OK status
 });
 
-// route to get things from SERVER?
+// once get calculated results, you can send results back to client side
 app.get('/calculator', (req, res) => {
     console.log('Getting messages...');
+// put loop conditional
     res.send(calcArray);
 });
 
@@ -33,6 +34,10 @@ app.get('/calculator', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}...`);
 });
+
+
+
+
 
 
 
