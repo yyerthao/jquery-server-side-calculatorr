@@ -96,7 +96,7 @@ function getNumbers(){ // gets the results from server side
 function renderNumbers(array) {
     $('#history-list').empty();
     for (let item of array) {
-        $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.result}</li>`)
+        $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.answer}</li>`)
     }
 }
 
