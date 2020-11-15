@@ -25,18 +25,6 @@ JQUERY
 
 
 
-- get 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-- 
-
 
 
 - Build out the server-side logic to compute the numbers as - appropriate. 
@@ -51,7 +39,8 @@ History
 
 NOTE: 
 -History should exist even after refreshing the page. It's expected that the history will go away after restarting the server. 
-- We'll talk about long term data storage next week.
+[] append values to DOM
+[] 
 
 
 -------------------------------------------------

@@ -6,7 +6,7 @@ function calculator(data) {
     console.log('Second number', data.secondNumber);
     console.log('Operator', data.operator);
 
-    // conditional goes here
+    // switch statement goes here 
     let result;
     switch (data.operator) {
         case '+':

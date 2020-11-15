@@ -8,15 +8,17 @@ let operator;
 
 function readyNow() {
     console.log('Hello from JQ');
+    // click handlers to calculate
     $('#equals').on('click', handleMessage);
+    // click handlers for all operator buttons
     $('#add-Btn').on('click', calculation);
     $('#minus-Btn').on('click', calculation);
     $('#mult-Btn').on('click', calculation);
     $('#div-Btn').on('click', calculation);
-// click handler to clear input on click of C button
+    // click handler to clear input on click of 'C' button
     $('#clearInput').on('click', clearInput);
-// shows any messages from the server at refresh
-    getNumbers();
+    // shows any messages from the server at refresh
+    getNumbers(); // this gets result from server side
 }
 
 // function to handleMessage
@@ -32,8 +34,9 @@ function handleMessage(event) {
         secondNumber: secondInput,
         operator: operator,
     }
-    console.log('Numbers are:', mathObject);
+    console.log('Here\'s the calculations:', mathObject);
 
+    // using jquery to run ajax method to perform ajax request
     $.ajax({
         method: 'POST',
         url: '/calculator',
@@ -44,59 +47,64 @@ function handleMessage(event) {
         // clear inputs
         $('#input1').val('');
         $('#input2').val('');
-    // gets information from server side again to see results
-        getNumbers();
+        // gets information from server side again to see results
+        getNumbers(); // get route
+    }).catch(function (error) {
+        // console.log & alert the user
+        console.log('Error', error);
+        alert('Something bad happened. Try again later.');
     })
 }
-
-
-// $('#add-Btn').on('click', calculation);
-// $('#minus-Btn').on('click', calculation);
-// $('#mult-Btn').on('click', calculation);
-// $('#div-Btn').on('click', calculation);
-
 
 
 // function for actual calculation ??? 
 function calculation(event) {
     event.preventDefault();
-// this refers to button clicked on
-// .text() grabs text between button tags
-// in this case, it grabs the operator signs 
-// of whatever button clicked on
+    // this refers to button clicked on
+    // .text() grabs text between button tags
+    // in this case, it grabs the operator signs 
+    // of whatever button clicked on
     operator = $(this).text();
-    console.log('Operator', operator);
+    // console.log('Operator', operator);
 }
 
 // function to clear input from input elements
-function clearInput(event){
+function clearInput(event) {
     event.preventDefault();
     console.log('Cleared input');
-// setter, setting input elements back to empty strings
+    // setter, setting input elements back to empty strings
     $('#input1').val('');
     $('#input2').val('');
 }
 
-function getNumbers(){ // gets the results from server side
+function getNumbers() { // gets the results from server side
     $.ajax({
         method: 'GET',
         url: '/calculator',
-    }).then(function (response) { 
-// response turns into an array
-// response[0] = most recent calculations
-// response[0].answer = most recent answer 
-    console.log('Got messages', response);
-// console.log('Got messages', response[0]);
-// console.log('Got messages', response[0].answer);
-// everytime you do a post, go back to get from server
+    }).then(function (response) {
+        // response turns into calcArray
+        // response[0] = most recent calculations
+        // response[0].answer = most recent answer 
+        console.log('Got messages', response);
+        // everytime you do a post, go back to get from server
         renderNumbers(response);
     });
 }
 
-function renderNumbers(array) {
-    $('#history-list').empty();
-    for (let item of array) {
-        $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${item.answer}</li>`)
+
+function renderNumbers(array) { // rendersNumbers to DOM 
+// added conditional to check if array has anything in it,
+// because it shouldn't append anything if there's nothing to append
+// gets rid of jquery error on initial load
+    if (array.length > 0) {
+        console.log('--------------- This is the array', array[0]);
+        $('#history-list').empty(); // empties ul so it doesn't duplicate the list
+        for (let item of array) {
+            let answer = item.answer;
+            $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${answer}</li>`);
+        }
+// grabs most recent answer to append to span 
+        $('#results').text(array[0].answer);
     }
 }
 
@@ -106,5 +114,12 @@ function renderNumbers(array) {
 
 
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////
+
+// QUESTION: 
+// const newArray = array[array.length - 1];
+
+
+
+
+// 
