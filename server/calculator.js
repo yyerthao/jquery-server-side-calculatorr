@@ -28,4 +28,3 @@ function calculator(data) {
     console.log('Here is the new object', data);
     return data;
 }
-

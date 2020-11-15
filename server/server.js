@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -9,11 +8,11 @@ app.use(express.static('server/public')); // run static files from folder
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-   
+
 
 // ---------------- BEGIN ROUTE -----------------------------------------------------------------
 // saves data from client 
-const calcArray = []; 
+const calcArray = [];
 
 
 // route to get mathObject
@@ -21,8 +20,8 @@ app.post('/calculator', (req, res) => {
     console.log('Got mathObject...', req.body); // req.body = mathObject
     let answer = mathCalc(req.body); // will return an object 
     console.log('Answer from server', answer);
-// unshift to store most recent answer to beginning of array
-    calcArray.unshift(answer); 
+    // unshift to store most recent answer to beginning of array
+    calcArray.unshift(answer);
     res.sendStatus(200); // 200 is an OK status
 });
 

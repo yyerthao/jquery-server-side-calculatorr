@@ -3,7 +3,7 @@ console.log('Hello from js');
 $(document).ready(readyNow)
 
 // declare variable called operator to store 
-// the text.() of the operator signs from buttons on DOM
+// the text.() of the operator signs from buttons onto DOM
 let operator;
 
 function readyNow() {
@@ -59,13 +59,13 @@ function handleMessage(event) {
 
 // function for actual calculation ??? 
 function calculation(event) {
-    event.preventDefault();
-    // this refers to button clicked on
+    event.preventDefault(); // this refers to button clicked on
     // .text() grabs text between button tags
     // in this case, it grabs the operator signs 
-    // of whatever button clicked on
+    // of button clicked on
     operator = $(this).text();
-    // console.log('Operator', operator);
+    // console.log('Operator', operator); // tested to see which operator displayed 
+    // when clicked on, commenting out to clean browser console
 }
 
 // function to clear input from input elements
@@ -93,9 +93,9 @@ function getNumbers() { // gets the results from server side
 
 
 function renderNumbers(array) { // rendersNumbers to DOM 
-// added conditional to check if array has anything in it,
-// because it shouldn't append anything if there's nothing to append
-// gets rid of jquery error on initial load
+    // added conditional to check if array has anything in it,
+    // because it shouldn't append anything if there's nothing to append
+    // gets rid of jquery error on initial load
     if (array.length > 0) {
         console.log('--------------- This is the array', array[0]);
         $('#history-list').empty(); // empties ul so it doesn't duplicate the list
@@ -103,8 +103,8 @@ function renderNumbers(array) { // rendersNumbers to DOM
             let answer = item.answer;
             $('#history-list').append(`<li>${item.firstNumber} ${item.operator} ${item.secondNumber} = ${answer}</li>`);
         }
-// grabs most recent answer to append to span 
-        $('#results').text(array[0].answer);
+        // grabs most recent answer to append to span 
+        $('#results').text(array[0].answer.toLocaleString());
     }
 }
 
@@ -117,9 +117,10 @@ function renderNumbers(array) { // rendersNumbers to DOM
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 // QUESTION: 
-// const newArray = array[array.length - 1];
 
-
-
-
-// 
+// * Some other plans, would be to add a method that will add commas to my results 
+//      in case the resulting number is more than 999.
+// *
+// *
+// *
+// *
