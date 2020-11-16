@@ -1,3 +1,9 @@
+
+![MIT LICENSE](https://img.shields.io/github/license/scottbromander/the_marketplace.svg?style=flat-square)
+![REPO SIZE](https://img.shields.io/github/repo-size/yyerthao/jquery-server-side-calculatorr.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/yyerthao/jquery-server-side-calculatorr.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/yyerthao/jquery-server-side-calculatorr.svg?style=social)
+
 # Jquery Server Side Calculator
 
 ## Description
